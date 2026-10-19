@@ -37,22 +37,22 @@ public class DatasourceConfiguration {
 
         HikariConfig hikariConfig = new HikariConfig();
 
-        /*
-        * inserção das propriedades do banco na classe config do hikariDatasource
-        * */
+        /**
+         * inserção das propriedades do banco na classe config do hikariDatasource
+         * */
         hikariConfig.setJdbcUrl(url);
         hikariConfig.setUsername(username);
         hikariConfig.setPassword(password);
         hikariConfig.setDriverClassName(driver);
 
-        /*
-        * maximumPoolSize -> Máximo de conexões que o pool mantém, contando as conexões em uso e ociosas
-        * poolName -> Nome do pool de conexões
-        * maxLifetime -> Tempo máximo que uma conexão fica ativa (passada em ms)
-        * connectionTimeout -> Tempo de espera para conseguir uma conexão do pool
-        * connectionTestQuery -> Query de teste para validar a conexão
-        * leakDetectionThreshold -> Alerta se a conexão ficar presa pelo tempo determinado
-        * */
+        /**
+         * maximumPoolSize -> Máximo de conexões que o pool mantém, contando as conexões em uso e ociosas
+         * poolName -> Nome do pool de conexões
+         * maxLifetime -> Tempo máximo que uma conexão fica ativa (passada em ms)
+         * connectionTimeout -> Tempo de espera para conseguir uma conexão do pool
+         * connectionTestQuery -> Query de teste para validar a conexão
+         * leakDetectionThreshold -> Alerta se a conexão ficar presa pelo tempo determinado
+         * */
         hikariConfig.setMaximumPoolSize(10);
         hikariConfig.setPoolName("authserver-db-pool");
         hikariConfig.setMaxLifetime(600000); // 10 minutos
