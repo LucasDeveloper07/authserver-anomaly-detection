@@ -1,12 +1,22 @@
-# Authorization Server com detectação de anomalias
+# Authorization Server com detecção de anomalias
 
 Servidor de autenticação/autorização que registra eventos de login,
 detecta comportamento suspeito por IP e bloqueia requisições ou
 suspende usuários.
 
+## Persistência (Spring Data JPA)
+
+Implementações utilizadas na configuração do sistema:
+
+- Pool de conexões `HikariCP`
+- Annotations para relacionamento de entidades (`@ManyToMany` e `@ManyToOne`)
+- Annotation `@JoinColumn` no relacionamento `@ManyToMany`
+- Utilização do `FetchType.LAZY` para não carregar todos os objetos na instância da entidade: as roles só serão carregadas quando necessárias.
+- Auditoria automática de entidades usando `AuditingEntityListener`
+
 ## Scripts SQL (Tabelas)
 
-``` SQL
+```sql
 CREATE TABLE roles(
 	id UUID NOT NULL PRIMARY KEY,
 	name VARCHAR(30) NOT NULL UNIQUE
